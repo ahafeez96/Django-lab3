@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
-    <form action="" method="post">
-      {% csrf_token %}
-      <input type="text" name="name" placeholder="Enter intake name" />
-      <input type="submit" value="Insert intake" />
-    </form>
+    <div style="display: block; text-align: center">
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" />
+        <input type="submit" value="Add name" class="btn btn-primary" />
+      </form>
+    </div>
   </body>
 </html>
 

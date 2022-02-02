@@ -69,13 +69,16 @@ def about(request):
 
 
 def landing (request):
-  return render(request,'pages/landing.html')
-
+  if (request.method=="GET"):
+    return render(request,'pages/landing.html')
+  else:
+    logout(request)
+    return render(request,'pages/landing.html')
 def contact (request):
     return render(request,'pages/contact.html')
 
 
-def login(request):
+def login_view(request):
   if (request.method=="GET"):
     return render(request,'pages/login.html')
     print("if cond")
@@ -84,8 +87,12 @@ def login(request):
      print("else cond",request)
      if(len(user)>0):
        context={}
-       request.session['username']=request.POST['username']
-       return redirect(landing)
+       usname=request.POST['username']
+       passwd=request.POST['password']
+       user1= authenticate (username=usname, password=passwd)
+       if user is not None:
+        login(request,user1)
+        return redirect(landing)
      else:
        context={}
        context['warning']='Invalid username or password'

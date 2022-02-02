@@ -15,19 +15,29 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
-    <table width="100%" border="1">
+    <table class="table table-dark" width="50%" border="1">
       <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Actions</td>
+        <td scope="col">ID</td>
+        <td scope="col">Name</td>
+        <td scope="col">Actions</td>
       </tr>
       {%for intake in intakes%}
       <tr>
-        <td>{{intake.id}}</td>
-        <td>{{intake.intakename}}</td>
-        <td>
-          <a href="{%url 'deleteintake' intake.id %}">Delete</a>
-          <a href="{%url 'updateintake' intake.id %}">Update</a>
+        <td scope="col" style="font-size: 30px">{{intake.id}}</td>
+        <td scope="col" style="font-size: 30px">{{intake.intakename}}</td>
+        <td scope="col">
+          <a
+            style="font-size: 30px"
+            href="{%url 'deleteintake' intake.id %}"
+            class="badge badge-primary"
+            >Delete</a
+          >
+          <a
+            style="font-size: 30px"
+            href="{%url 'updateintake' intake.id %}"
+            class="badge badge-info"
+            >Update</a
+          >
         </td>
       </tr>
 
